@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ikram Choukhantri – Data Engineer</title>
+<meta name="description" content="Portfolio de Ikram Choukhantri, Data Engineer spécialisée Microsoft Azure, Fabric, Databricks et PySpark.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg:      #f4f8ff;
+    --bg2:     #ffffff;
+    --bg3:     #eaf1fc;
+    --text:    #0f1f3d;
+    --muted:   #5a6e8a;
+    --light:   #8ba3c0;
+    --accent:  #1a6fd4;
+    --accent2: #0ea5e9;
+    --accent3: #6366f1;
+    --border:  rgba(26, 111, 212, 0.12);
+    --border2: rgba(26, 111, 212, 0.25);
+    --radius:  14px;
+    --shadow:  0 2px 16px rgba(26,111,212,0.07);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 800px 400px at 10% 20%, rgba(14,165,233,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 300px at 90% 70%, rgba(99,102,241,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 200px at 55% 45%, rgba(26,111,212,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  * { position: relative; z-index: 1; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(244,248,255,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Lora', serif; font-weight: 600; font-size: 1.15rem; color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color .2s; font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 2.5rem 5rem;
+  }
+  .hero-inner { max-width: 860px; }
+
+  .cloud-blob {
+    position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+  }
+  .cb1 { width: 340px; height: 170px; top: 14%; right: 4%; border-radius: 85px; background: rgba(14,165,233,0.07); }
+  .cb2 { width: 210px; height: 100px; top: 26%; right: 23%; border-radius: 50px; background: rgba(99,102,241,0.05); }
+  .cb3 { width: 170px; height: 85px; bottom: 28%; left: 2%; border-radius: 43px; background: rgba(26,111,212,0.05); }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); background: rgba(26,111,212,0.07);
+    border: 1px solid rgba(26,111,212,0.2);
+    padding: 6px 14px; border-radius: 100px; margin-bottom: 2rem;
+    animation: fadeUp 0.5s ease both; font-weight: 500;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent2); animation: pulse 2s infinite; flex-shrink: 0;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.8rem, 6.5vw, 5rem);
+    line-height: 1.08; letter-spacing: -0.02em;
+    color: var(--text); margin-bottom: 1.5rem;
+    animation: fadeUp 0.5s 0.08s ease both;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-desc {
+    font-size: 1rem; color: var(--muted); max-width: 540px;
+    margin-bottom: 2.5rem; font-weight: 400; line-height: 1.8;
+    animation: fadeUp 0.5s 0.16s ease both;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.5s 0.24s ease both; }
+  .btn {
+    padding: 13px 26px; border-radius: 100px; font-size: 0.88rem;
+    font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .2s, box-shadow .2s; font-weight: 500;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--accent); color: #fff; border: none; box-shadow: 0 4px 20px rgba(26,111,212,0.28); }
+  .btn-primary:hover { box-shadow: 0 6px 28px rgba(26,111,212,0.4); }
+  .btn-outline { background: var(--bg2); color: var(--text); border: 1px solid var(--border2); box-shadow: var(--shadow); }
+  .btn-outline:hover { background: var(--bg3); }
+
+  .stats-bar {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+    margin-top: 3rem; padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.5s 0.32s ease both;
+  }
+  .stat-num { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 600; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  section { padding: 5rem 2.5rem; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.75rem; font-weight: 600; }
+  h2 { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 2.5rem; color: var(--text); }
+  .container { max-width: 1020px; margin: 0 auto; }
+
+  .arch-banner {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 18px; padding: 1.5rem 2rem;
+    margin-bottom: 2.5rem; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .arch-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; flex-shrink: 0; }
+  .arch-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+  .arch-step {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 12px;
+    font-size: 0.75rem; font-weight: 600; color: var(--accent); white-space: nowrap;
+  }
+  .arch-arrow { color: var(--light); font-size: 0.9rem; margin: 0 2px; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+  .skill-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    box-shadow: var(--shadow); transition: border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(26,111,212,0.12); }
+  .skill-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+  .skill-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .skill-card h3 { font-size: 0.83rem; font-weight: 600; color: var(--text); }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 0.7rem; padding: 3px 9px; border-radius: 100px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); letter-spacing: 0.02em; font-weight: 500; }
+  .ta { background: rgba(26,111,212,0.08); color: var(--accent); border-color: rgba(26,111,212,0.2); }
+  .tf { background: rgba(99,102,241,0.08); color: var(--accent3); border-color: rgba(99,102,241,0.22); }
+
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 0; width: 1px; background: var(--border2); }
+  .exp-item { margin-bottom: 2.5rem; position: relative; }
+  .exp-dot { position: absolute; left: -1.9rem; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 0 0 3px rgba(26,111,212,0.15); }
+  .exp-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); transition: border-color .2s; }
+  .exp-card:hover { border-color: var(--border2); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  .exp-title { font-weight: 600; font-size: 1rem; color: var(--text); }
+  .exp-company { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-top: 2px; }
+  .exp-date { font-size: 0.75rem; color: var(--muted); background: var(--bg3); padding: 4px 12px; border-radius: 100px; border: 1px solid var(--border); white-space: nowrap; font-weight: 500; }
+  .exp-list { list-style: none; }
+  .exp-list li { font-size: 0.85rem; color: var(--muted); padding: 5px 0 5px 1.1rem; position: relative; line-height: 1.65; border-bottom: 1px solid var(--border); }
+  .exp-list li:last-child { border-bottom: none; }
+  .exp-list li::before { content: '›'; position: absolute; left: 0; color: var(--accent2); font-size: 1rem; top: 4px; font-weight: 700; }
+  .exp-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .edu-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); transition: border-color .2s, transform .2s; }
+  .edu-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .edu-year { font-size: 0.7rem; color: var(--accent2); letter-spacing: 0.1em; margin-bottom: 0.75rem; text-transform: uppercase; font-weight: 600; }
+  .edu-degree { font-family: 'Lora', serif; font-size: 1.1rem; line-height: 1.35; margin-bottom: 0.6rem; color: var(--text); }
+  .edu-school { font-size: 0.83rem; color: var(--muted); font-weight: 500; }
+
+  .cert-card {
+    background: linear-gradient(135deg, rgba(26,111,212,0.04), rgba(99,102,241,0.04));
+    border: 1px solid rgba(26,111,212,0.18); border-radius: var(--radius);
+    padding: 2rem 2.5rem; display: flex; align-items: center; gap: 1.5rem;
+    flex-wrap: wrap; box-shadow: var(--shadow);
+  }
+  .cert-badge { width: 52px; height: 52px; border-radius: 14px; background: rgba(26,111,212,0.1); border: 1px solid rgba(26,111,212,0.2); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .cert-info h3 { font-size: 0.92rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .cert-info p { font-size: 0.8rem; color: var(--muted); }
+
+  .lang-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .lang-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.75rem; text-align: center; min-width: 130px; box-shadow: var(--shadow); transition: border-color .2s, transform .2s; }
+  .lang-item:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .lang-flag { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+  .lang-name { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .lang-level { font-size: 0.72rem; color: var(--muted); }
+
+  .contact-section { background: linear-gradient(135deg, rgba(26,111,212,0.04), rgba(14,165,233,0.04)); border: 1px solid var(--border2); border-radius: 24px; padding: 3rem; box-shadow: var(--shadow); }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .contact-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: var(--text); transition: border-color .2s, transform .2s, box-shadow .2s; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); }
+  .contact-item:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,111,212,0.12); }
+  .contact-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(26,111,212,0.08); border: 1px solid rgba(26,111,212,0.15); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .contact-text { font-size: 0.8rem; min-width: 0; }
+  .contact-text strong { display: block; font-size: 0.68rem; color: var(--light); font-weight: 500; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-text span { color: var(--text); font-weight: 500; word-break: break-all; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  footer { text-align: center; padding: 2.5rem; font-size: 0.78rem; color: var(--light); border-top: 1px solid var(--border); background: var(--bg2); }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.68rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 6.5rem 1.25rem 3rem; }
+    .contact-section { padding: 2rem 1.25rem; }
+    .stats-bar { gap: 1.5rem; }
+    .arch-banner { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cloud-blob cb1"></div>
+<div class="cloud-blob cb2"></div>
+<div class="cloud-blob cb3"></div>
+
+<nav>
+  <span class="nav-logo">Ikram C.</span>
+  <div class="nav-links">
+    <a href="#skills">Comp&eacute;tences</a>
+    <a href="#experience">Exp&eacute;rience</a>
+    <a href="#formation">Formation</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Disponible &mdash; Casablanca, Maroc
+    </div>
+    <h1>Ikram<br><em>Choukhantri</em></h1>
+    <p class="hero-desc">Data Engineer certifi&eacute;e Microsoft Fabric. Je con&ccedil;ois des pipelines cloud robustes, des architectures Medallion et des entrep&ocirc;ts de donn&eacute;es performants sur Azure et Microsoft Fabric pour transformer la donn&eacute;e brute en valeur m&eacute;tier.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Me contacter &darr;</a>
+      <a href="https://ikramchoukhantri.github.io" target="_blank" rel="noopener" class="btn btn-outline">GitHub &rarr;</a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">1+</div>
+        <div class="stat-label">An d&rsquo;exp&eacute;rience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">DP-700</div>
+        <div class="stat-label">Certifi&eacute;e Microsoft</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Technologies cloud</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Langues</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Expertise technique</p>
+    <h2>Comp&eacute;tences</h2>
+
+    <div class="arch-banner">
+      <div class="arch-label">Pipeline Medallion :</div>
+      <div class="arch-steps">
+        <div class="arch-step">&#9749; Sources</div>
+        <span class="arch-arrow">&#8594;</span>
+        <div class="arch-step">&#9679; Bronze</div>
+        <span class="arch-arrow">&#8594;</span>
+        <div class="arch-step">&#9679; Silver</div>
+        <span class="arch-arrow">&#8594;</span>
+        <div class="arch-step">&#9733; Gold</div>
+        <span class="arch-arrow">&#8594;</span>
+        <div class="arch-step">&#128202; BI / Fabric</div>
+      </div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:rgba(26,111,212,0.1);">&#9729;</div>
+          <h3>Microsoft Azure</h3>
+        </div>
+        <div class="tags">
+          <span class="tag ta">Data Factory</span>
+          <span class="tag ta">Databricks</span>
+          <span class="tag ta">ADLS Gen2</span>
+          <span class="tag ta">Key Vault</span>
+          <span class="tag ta">Logic Apps</span>
+          <span class="tag ta">Azure SQL</span>
+          <span class="tag ta">Azure DevOps</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:rgba(99,102,241,0.1);">&#128196;</div>
+          <h3>Microsoft Fabric</h3>
+        </div>
+        <div class="tags">
+          <span class="tag tf">Fabric Data Engineering</span>
+          <span class="tag tf">Lakehouse</span>
+          <span class="tag tf">OneLake</span>
+          <span class="tag tf">Data Pipeline</span>
+          <span class="tag tf">Notebooks</span>
+          <span class="tag tf">Dataflow Gen2</span>
+          <span class="tag tf">Warehouse</span>
+          <span class="tag tf">Semantic Model</span>
+          <span class="tag tf">DP-700 &#10003;</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:rgba(14,165,233,0.1);">&#9889;</div>
+          <h3>Big Data &amp; Stockage</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Delta Lake</span>
+          <span class="tag">Unity Catalog</span>
+          <span class="tag">Snowflake</span>
+          <span class="tag">Hadoop</span>
+          <span class="tag">Parquet</span>
+          <span class="tag">Delta Tables</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:rgba(26,111,212,0.08);">&#128187;</div>
+          <h3>Langages &amp; Frameworks</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">PySpark</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">SQL</span>
+          <span class="tag">PL/SQL</span>
+          <span class="tag">YAML</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:rgba(14,165,233,0.08);">&#128209;</div>
+          <h3>Bases de donn&eacute;es</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">SQL Server</span>
+          <span class="tag">Oracle</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">BigQuery</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:rgba(99,102,241,0.08);">&#128202;</div>
+          <h3>BI &amp; Visualisation</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:rgba(26,111,212,0.1);">&#128295;</div>
+          <h3>Outils &amp; DevOps</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Azure DevOps</span>
+          <span class="tag">Git / GitHub</span>
+          <span class="tag">Databricks Repos</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Parcours</p>
+    <h2>Exp&eacute;rience professionnelle</h2>
+    <div class="timeline">
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Data Engineer</div>
+              <div class="exp-company">Label Vie &middot; Casablanca, Maroc</div>
+            </div>
+            <span class="exp-date">F&eacute;v. 2025 &ndash; Aujourd&rsquo;hui</span>
+          </div>
+          <ul class="exp-list">
+            <li>Industrialisation de pipelines d&rsquo;ingestion multi-sources (SFTP, PostgreSQL, Oracle, BigQuery) orchestr&eacute;s par Azure Data Factory, pilot&eacute;s par un r&eacute;f&eacute;rentiel Azure SQL (full/incr&eacute;mental, watermark, sch&eacute;mas dynamiques).</li>
+            <li>D&eacute;veloppement PySpark / Delta Lake selon l&rsquo;architecture Medallion (Bronze &rarr; Silver &rarr; Gold) : MERGE incr&eacute;mental, d&eacute;duplication et optimisation des performances.</li>
+            <li>Construction du DWH : sch&eacute;ma en &eacute;toile (faits/dimensions), r&egrave;gles m&eacute;tier, couche Gold pour la consommation BI.</li>
+            <li>Gouvernance via Unity Catalog : catalogues/sch&eacute;mas, RBAC, ownership, s&eacute;curisation Delta/Parquet.</li>
+            <li>Automatisation et supervision : Logic Apps (r&eacute;ception/validation), d&eacute;clenchement pipelines, alerting (succ&egrave;s/&eacute;chec, retard, anomalies).</li>
+            <li>CI/CD avec Azure DevOps : versioning et d&eacute;ploiement automatis&eacute; des notebooks, jobs et pipelines.</li>
+            <li>D&eacute;marche FinOps : suivi DBU/clusters, optimisation (dimensionnement, scheduling), tagging et reporting.</li>
+            <li>Collaboration transverse (Data Science, Gouvernance, BI, m&eacute;tiers) pour cadrage, qualit&eacute; et mise en production.</li>
+          </ul>
+          <div class="exp-tools">
+            <span class="tag ta">Azure Data Factory</span>
+            <span class="tag ta">Databricks</span>
+            <span class="tag ta">PySpark</span>
+            <span class="tag ta">Delta Lake</span>
+            <span class="tag ta">Unity Catalog</span>
+            <span class="tag ta">ADLS Gen2</span>
+            <span class="tag ta">Logic Apps</span>
+            <span class="tag ta">Azure DevOps</span>
+            <span class="tag ta">Key Vault</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formation">
+  <div class="container">
+    <p class="section-label">Acad&eacute;mique</p>
+    <h2>Formation</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-year">2022 &ndash; 2025</div>
+        <div class="edu-degree">Dipl&ocirc;me d&rsquo;Ing&eacute;nieur &ndash; Business Intelligence &amp; Analytics</div>
+        <div class="edu-school">ENSIAS &middot; Rabat, Maroc</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2019 &ndash; 2022</div>
+        <div class="edu-degree">Licence en Sciences Math&eacute;matiques Appliqu&eacute;es</div>
+        <div class="edu-school">Universit&eacute; Hassan II &middot; Casablanca, Maroc</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:3rem;">Certification</h2>
+    <div class="cert-card">
+      <div class="cert-badge">&#127885;</div>
+      <div class="cert-info">
+        <h3>Microsoft Certified: Fabric Data Engineer Associate (DP-700)</h3>
+        <p>Microsoft &middot; 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-label">Communication</p>
+    <h2>Langues</h2>
+    <div class="lang-grid">
+      <div class="lang-item">
+        <span class="lang-flag">&#127474;&#127462;</span>
+        <div class="lang-name">Arabe</div>
+        <div class="lang-level">Langue maternelle</div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-flag">&#127467;&#127479;</span>
+        <div class="lang-name">Fran&ccedil;ais</div>
+        <div class="lang-level">Courant &middot; C1</div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-flag">&#127468;&#127463;</span>
+        <div class="lang-name">Anglais</div>
+        <div class="lang-level">Professionnel &middot; B2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-section">
+      <p class="section-label">Parlons-en</p>
+      <h2 style="margin-bottom:0.5rem;">Travaillons ensemble</h2>
+      <p style="color:var(--muted);font-size:0.9rem;">Ouverte aux opportunit&eacute;s, collaborations et projets data cloud.</p>
+      <div class="contact-grid">
+        <a href="mailto:ikramchoukhantri@gmail.com" class="contact-item">
+          <div class="contact-icon">&#9993;</div>
+          <div class="contact-text"><strong>Email</strong><span>ikramchoukhantri@gmail.com</span></div>
+        </a>
+        <a href="tel:+212607203258" class="contact-item">
+          <div class="contact-icon">&#128222;</div>
+          <div class="contact-text"><strong>T&eacute;l&eacute;phone</strong><span>+212 607 203 258</span></div>
+        </a>
+        <a href="https://linkedin.com/in/ikram-choukhantri" target="_blank" rel="noopener" class="contact-item">
+          <div class="contact-icon">&#128188;</div>
+          <div class="contact-text"><strong>LinkedIn</strong><span>ikram-choukhantri</span></div>
+        </a>
+        <a href="https://ikramchoukhantri.github.io" target="_blank" rel="noopener" class="contact-item">
+          <div class="contact-icon">&#128279;</div>
+          <div class="contact-text"><strong>GitHub Pages</strong><span>ikramchoukhantri.github.io</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Ikram Choukhantri &middot; Data Engineer &middot; Casablanca, Maroc</p>
+</footer>
+
+</body>
+</html>
